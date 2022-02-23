@@ -7,9 +7,12 @@ function Home() {
   const [img,setImg] = useState("");
   const [img2,setImg2] = useState("");
   const [img3,setImg3] = useState("");
+  const [data,setData] = useState("");
+  const [data1,setData1] = useState("");
+  const [data2,setData2] = useState("");
   const [content,setContent] = useState("");
+  const [content1,setContent1] = useState("");
   const [content2,setContent2] = useState("");
-  const [content3,setContent3] = useState("");
   axios.get("https://jsonplaceholder.typicode.com/photos").then(function(data){
     console.log(data.data[0]);
     setImg(data.data[0]);
@@ -17,9 +20,14 @@ function Home() {
     setImg3(data.data[0]);
   });
   axios.get("https://jsonplaceholder.typicode.com/users").then(function(data){
+    setData(data.data[0]);
+    setData1(data.data[1]);
+    setData2(data.data[2]);
+  })
+  axios.get("https://jsonplaceholder.typicode.com/posts").then(function(data){
     setContent(data.data[0]);
-    setContent2(data.data[1]);
-    setContent3(data.data[2]);
+    setContent1(data.data[1]);
+    setContent2(data.data[2]);
   })
   return (
     <div className="app">
@@ -29,10 +37,11 @@ function Home() {
      </div>
      <div id="right">
        <h2>Title : {img.title}</h2>
-       <p>Website : {content.website}</p>
-       <p>Name : {content.name}</p>
-       <p>Username : {content.username}</p>
-       <p>Email : {content.email}</p>
+       <p>Website : {data.website}</p>
+       <p>Name : {data.name}</p>
+       <p>Username : {data.username}</p>
+       <p>Email : {data.email}</p>
+       <p>Content : {content.body}</p>
      </div>
      </div>
      <div id="thumbnail">
@@ -41,10 +50,11 @@ function Home() {
      </div>
      <div id="right">
        <h2>Title : {img2.title}</h2>
-       <p>Website : {content2.website}</p>
-       <p>Name : {content2.name}</p>
-       <p>Username : {content2.username}</p>
-       <p>Email : {content2.email}</p>
+       <p>Website : {data1.website}</p>
+       <p>Name : {data1.name}</p>
+       <p>Username : {data1.username}</p>
+       <p>Email : {data1.email}</p>
+       <p>Content : {content1.body}</p>
      </div>
      </div>
      <div id="thumbnail">
@@ -53,10 +63,11 @@ function Home() {
      </div>
      <div id="right">
        <h2>Title : {img3.title}</h2>
-       <p>Website : {content3.website}</p>
-       <p>Name : {content3.name}</p>
-       <p>Username : {content3.username}</p>
-       <p>Email : {content3.email}</p>
+       <p>Website : {data2.website}</p>
+       <p>Name : {data2.name}</p>
+       <p>Username : {data2.username}</p>
+       <p>Email : {data2.email}</p>
+       <p>Content : {content2.body}</p>
      </div>
      </div>
     </div>

@@ -4,6 +4,7 @@ import Nav from "./nav";
 import {BrowserRouter as Router ,Switch,Route,Routes} from "react-router-dom";
 import Preview from './preview';
 import GoogleMaps from './author';
+import "./App.css";
 
 function App() {
   return (

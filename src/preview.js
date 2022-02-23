@@ -10,6 +10,8 @@ function Preview() {
   const [comment4,setComment4] = useState("");
   const [comment5,setComment5] = useState("");
   const [content,setContent] = useState("");
+  const [data,setData] = useState([]);
+
   axios.get("https://jsonplaceholder.typicode.com/photos").then(function(data){
     console.log(data.data[0]);
     setImg(data.data[0]);
@@ -26,7 +28,7 @@ function Preview() {
   })
   return (
     <div className="app">
-      <div id="thumbnail">
+      <div id="thumbnail1">
         <div id='left'>
      <img id="img" src={img.url} ></img>
      </div>
@@ -41,6 +43,20 @@ function Preview() {
        <p>{comment3.body} </p>
        <p>{comment4.body} </p>
        <p>{comment5.body} </p>
+       <br></br>
+       <textarea id="textarea" placeholder='Enter Comments here...' rows="4" cols="50" name="comment" form="usrform"></textarea>
+<br></br>
+<button onClick={function(){
+  data.push(document.getElementById("textarea").value);
+  console.log(document.getElementsByTagName("textarea")[0].value);
+}} type="button" class="btn btn-primary">Submit</button>
+<br></br>
+<h3>Comment : </h3>
+{data.map(function(data){
+  return (
+    <div>{data}</div>
+  )
+}).reverse()}
      </div>
      </div>
     
